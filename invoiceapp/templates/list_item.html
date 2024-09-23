@@ -1,0 +1,130 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>List Item</title>
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.theme.min.css' %}" rel="stylesheet">
+</head>
+<body><br><br><br>
+    <h2>{{title}}</h2>
+
+    <form method="POST"  action="" >
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+     
+        {% csrf_token %}
+        {{form.media}}
+        <div class="container">
+        {% for field in form %}
+        <div class="row">
+          <div class="col-md-6">
+           
+            {% bootstrap_field field  %}
+
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-md-6">
+            <input class="btn-lg btn-success h-300 w-300 " type="submit" value="Search">
+            </div>
+            </div>
+            </div>
+            </div>
+        </form>
+   <br>
+   <br>
+    <div class="display_table">
+    <table class="table">
+      <thead>
+        <tr>
+            
+            <th>Invoice Date</th>
+            <th>Name</th>
+            <th>Invoice Number</th>
+            <th>Invoice Type</th>
+            <th>Quantity</th>
+            <th>Invoice UnitPrice</th>
+            <th>Line One totalprice</th>
+            <th>Line Two InvoiceQuantity</th>
+            <th>Line two unitprice</th>
+            <th>Line Two totalprice</th>
+            <th>Line Three InvoiceQuantity</th>
+            <th>Line three unitprice</th>
+            <th>Line Three totalprice</th>
+            <th>update</th>
+            <th>delete</th>
+            <th>Generate pdf</th ></tr> 
+    
+    </thead>
+        {% if listcount > 1 %}
+       {% for instance in queryset %}
+<tr>
+       <td>{{forloop.counter}}</td>
+	    <td>{{instance.invoice_date}}</td>
+        <td>{{instance.name}}</td>
+        <td>{{instance.invoice_number}}</td>
+        <td>{{instance.invoice_type}}</td>
+        <td>{{instance.line_one_quantity}}</td>
+        <td>{{instance.line_one_unit_price}}</td>
+        <td>{{instance.line_one_total_price}}</td>
+        <td>{{instance.line_two_quantity}}</td>
+        <td>{{instance.line_two_unit_price}}</td>
+        <td>{{instance.line_two_total_price}}</td>
+        <td>{{instance.line_three_quantity}}</td>
+        <td>{{instance.line_three_unit_price}}</td>
+        <td>{{instance.line_three_total_price}}</td>
+        <td><a class="btn btn-success" href="{% url 'update' instance.id %}">Update</a></td>
+        <td><a class="btn btn-danger" href="{% url 'delete' instance.id %}">Delete</a></td>
+
+
+       
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td>1</td>
+             <td>{{queryset.invoice_date}}</td>
+             <td>{{queryset.name}}</td>
+             <td>{{queryset.invoice_number}}</td>
+             <td>{{queryset.invoice_type}}</td>
+             <td>{{queryset.line_one_quantity}}</td>
+             <td>{{queryset.line_one_unit_price}}</td>
+             <td>{{queryset.line_one_total_price}}</td>
+             <td>{{queryset.line_two_quantity}}</td>
+             <td>{{queryset.line_two_unit_price}}</td>
+             <td>{{queryset.line_two_total_price}}</td>
+             <td>{{queryset.line_three_quantity}}</td>
+             <td>{{queryset.line_three_unit_price}}</td>
+             <td>{{queryset.line_three_total_price}}</td>
+             </tr>
+        {% endif %}
+
+    </table>
+    </div>
+	<br>
+
+	
+
+    
+<br>
+    
+      <a href="#" class="scrollToTop">Scroll To Top</a>
+	
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+</html>

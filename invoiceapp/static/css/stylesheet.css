@@ -1,0 +1,88 @@
+h2{
+    text-align: center;
+}
+/*Align the title to the center of the page*/
+.table{
+    width: 95%;
+    margin: auto;
+    text-align: right;
+    
+    font-size: 15px;
+}
+  h1{
+	text-align: center;
+  } 
+   /*Make alternating colors for the table rows*/
+   
+.table tr:nth-child(odd){
+     background:white;
+}
+th{
+	background-color: aquamarine;
+	color:white;
+}
+.table tr:nth-child(even){
+    background: #dae5f4
+}
+.display_table{
+	border-bottom-right-radius: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 20px;
+	box-shadow: 30px 30px 30px 30px grey;
+}
+.success{
+	list-style: none;
+	background-color:white;
+	color: white;
+	box-shadow: 12px 12px 12px grey;
+	text-align: center;
+}
+.myForm form{
+	box-shadow: 10px 10px 10px;
+	box-shadow: 12px 12px 12px green;
+	border: 1px solid #2e6da4;
+	padding: 50px;
+	padding-bottom: 20px;
+}
+/*Table paination styling*/
+.paging-nav {
+	text-align: right;
+	padding-top: 2px;
+	font-size: 20px;
+	padding-bottom: 10px;
+  }
+  
+  .paging-nav a {
+	margin: auto 1px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 1px 7px;
+	background: #91b9e6;
+	color: white;
+	border-radius: 100px;
+  }
+  
+  .paging-nav .selected-page {
+	background: #187ed5;
+	font-weight: bold;
+  }
+  /* End Table paination styling*/
+
+  /*Scroll to top Styling*/
+.scrollToTop{
+	width:100px;
+	padding:10px;
+	text-align:center;
+	font-weight: bold;
+	text-decoration: none;
+	position:fixed;
+	bottom:10px;
+	right:20px;
+	display:none;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+	opacity: 0.3;
+}
+/* End Scroll to top Styling*/
