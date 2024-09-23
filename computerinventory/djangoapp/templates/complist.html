@@ -1,0 +1,69 @@
+{% load static %}
+{% load bootstrap5 %}
+<html>
+    <head>
+        <link href="{%static 'css/stylesheet.css' %}" rel="stylesheet" >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        {% csrf_token %}
+    </head>
+    <h1 class="title">{{title}}</h1>
+
+    
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <div>
+    </div>
+    <div>
+        
+            {% csrf_token %}
+            {{form.media}}
+            
+            <div class="container">
+                {% for field in form %}
+                <div class="col-md-12">
+                    {% bootstrap_field field %}
+        
+                </div>
+                {% endfor %}
+            </div>
+            <div class="container-fluid"><input class="btn-lg btn-primary"type="submit" value="Search"></div>
+            
+        
+        <br><br><br>
+        <div class="container">
+    <table>
+        <tr>
+            <th>#</th>
+            <th>PC NAME</th>
+            <th>MAC ADD</th>
+            <th>IP ADD</th>
+            <th>USER'S NAME</th>
+            <th>LOCATION</th>
+            <th>UPDATE</th>
+            <th>DELETE</th>
+            
+        </tr>
+        {% for instance in queryset %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{instance.computer_name}}</a></td>
+            <td>{{instance.MAC_address}}</td>
+            <td>{{instance.IP_address}}</td>
+            <td>{{instance.users_name}}</td>
+            <td>{{instance.location}}</td>
+            <td><a class="btn btn-primary" href="{% url 'edit' instance.id %}">Update</a></td>
+            <td><a class="btn btn-danger" href="{% url 'delete' instance.id %}">Delete</a></td>
+        </tr>
+        
+
+        {%endfor%}
+    </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>
